@@ -12,7 +12,6 @@ Backend for a new web-based survey tool called Survey  Rabbit. When users login,
 <li>   You can also use curl for each API:</li>
 <li>  eg.curl --request POST http://localhost:8080/api/get_user?userId=1234</li>
 <li>   Sample Response: {"uid":1234,"userType":"admin","userName":"Priya"}</li>
-<li>   These APIs are  parametrized. You can currently call them without parameters since they will take the default values.<li>
-   
- <li>  The APIS supported are listed in the SURVEY RABBBIT API DOCUMENTATION page</li>
+<li>   These APIs are  parametrized. You can currently call them without parameters since they will take the default values.</li>
+<li>  The APIS supported are listed in the SURVEY RABBBIT API DOCUMENTATION page</li>
    
