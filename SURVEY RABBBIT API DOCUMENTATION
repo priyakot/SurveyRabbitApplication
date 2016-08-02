@@ -1,0 +1,390 @@
+SURVEY RABBBIT API DOCUMENTATION
+
+POST : get_user_details
+Details :Returns basic information about the logged-in user
+Endpoint: http://localhost:8080/api/get_user
+Sample Response:
+{"uid":1,"userType":"admin","userName":"Priya"}
+
+POST : create_survey
+Details : Create a survey, email collector and email message based on a template or existing survey.
+Endpoint : http://localhost:8080/api/createsurvey
+{
+    "authorId": {
+        "uid": 1234,
+        "userName": "test",
+        "userType": "author"
+    },
+    "dateCreated": "2016/08/01:20:00:00",
+    "dateModified": "2016/08/01:20:00:00",
+    "responses": [
+        {
+            "answers": [
+                "Extremely satisfied",
+                "Very satisfied",
+                "Somewhat satisfied"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "How satisfied are you with this application? ",
+                "questionType": "Single"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "Excellent",
+                "Easy to use",
+                "None of the above"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "What would you use to describe the application? ",
+                "questionType": "Multiple"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "Do you have any suggestions for improving this application? ",
+                "questionType": "OpenEnded"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "Limited to 200 chars "
+            ],
+            "completed": 0,
+            "question": {
+                "question": "How likely are you to recommend application? ",
+                "questionType": "Single"
+            },
+            "started": 0,
+            "surveyId": null
+        }
+    ],
+    "status": 0,
+    "surveyId": "1",
+    "surveyURL": null,
+    "title": "This is a Test Survey"
+}
+
+
+POST : get_survey_details
+Details : Retrieve a given survey's metadata.
+http://localhost:8080/api/get_survey_details
+Sample Response:
+{
+    "authorId": {
+        "uid": 1234,
+        "userName": "test1",
+        "userType": "author"
+    },
+    "dateCreated": "2016/08/01:20:00:00",
+    "dateModified": "2016/08/01:22:00:00",
+    "responses": [
+        {
+            "answers": [
+                "Extremely satisfied"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "How satisfied are you with this application? ",
+                "questionType": "Single"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "Excellent"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "What would you use to describe the application? ",
+                "questionType": "Multiple"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "5"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "Do you have any suggestions for improving this application? ",
+                "questionType": "OpenEnded"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "Perfect survey!"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "How likely are you to recommend application? ",
+                "questionType": "Single"
+            },
+            "started": 0,
+            "surveyId": null
+        }
+    ],
+    "status": 0,
+    "surveyId": "1234",
+    "surveyURL": null,
+    "title": "This is a Test Survey"
+}
+
+POST : get_responses
+Details : Takes a list of respondent ids and returns the responses that correlate to them. To be used with 'get_survey_details'
+Endpoint :http://localhost:8080/api/get_responses
+Sample Response:
+{
+    "responses": [
+        {
+            "answers": [
+                "Extremely satisfied",
+                "Very satisfied",
+                "Somewhat satisfied"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "How satisfied are you with this application? ",
+                "questionType": "Single"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "Excellent",
+                "Easy to use",
+                "None of the above"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "What would you use to describe the application? ",
+                "questionType": "Multiple"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "completed": 0,
+            "question": {
+                "question": "Do you have any suggestions for improving this application? ",
+                "questionType": "OpenEnded"
+            },
+            "started": 0,
+            "surveyId": null
+        },
+        {
+            "answers": [
+                "Limited to 200 chars "
+            ],
+            "completed": 0,
+            "question": {
+                "question": "How likely are you to recommend application? ",
+                "questionType": "Single"
+            },
+            "started": 0,
+            "surveyId": null
+        }
+    ],
+    "uid": 231,
+    "userName": "testUser",
+    "userType": "admin"
+}
+
+
+POST : get_survey_list
+Details : Retrieves a list of surveys in a user"s account.
+Endpoint : http://localhost:8080/api/get_survey_list
+[
+    {
+        "authorId": {
+            "uid": 1234,
+            "userName": "test",
+            "userType": "author"
+        },
+        "dateCreated": "2016/08/01:20:00:00",
+        "dateModified": "2016/08/01:22:00:00",
+        "responses": [
+            {
+                "answers": [
+                    "Extremely satisfied",
+                    "Very satisfied",
+                    "Somewhat satisfied"
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "How satisfied are you with this application? ",
+                    "questionType": "Single"
+                },
+                "started": 0,
+                "surveyId": null
+            },
+            {
+                "answers": [
+                    "Excellent",
+                    "Easy to use",
+                    "None of the above"
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "What would you use to describe the application? ",
+                    "questionType": "Multiple"
+                },
+                "started": 0,
+                "surveyId": null
+            },
+            {
+                "answers": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "Do you have any suggestions for improving this application? ",
+                    "questionType": "OpenEnded"
+                },
+                "started": 0,
+                "surveyId": null
+            },
+            {
+                "answers": [
+                    "Limited to 200 chars "
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "How likely are you to recommend application? ",
+                    "questionType": "Single"
+                },
+                "started": 0,
+                "surveyId": null
+            }
+        ],
+        "status": 0,
+        "surveyId": "1234",
+        "surveyURL": null,
+        "title": "Test Survey1"
+    },
+    {
+        "authorId": {
+            "uid": 1234,
+            "userName": "test",
+            "userType": "author"
+        },
+        "dateCreated": "2016/08/01:20:00:00",
+        "dateModified": "2016/08/01:22:00:00",
+        "responses": [
+            {
+                "answers": [
+                    "Extremely satisfied",
+                    "Very satisfied",
+                    "Somewhat satisfied"
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "How satisfied are you with this application? ",
+                    "questionType": "Single"
+                },
+                "started": 0,
+                "surveyId": null
+            },
+            {
+                "answers": [
+                    "Excellent",
+                    "Easy to use",
+                    "None of the above"
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "What would you use to describe the application? ",
+                    "questionType": "Multiple"
+                },
+                "started": 0,
+                "surveyId": null
+            },
+            {
+                "answers": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "Do you have any suggestions for improving this application? ",
+                    "questionType": "OpenEnded"
+                },
+                "started": 0,
+                "surveyId": null
+            },
+            {
+                "answers": [
+                    "Limited to 200 chars "
+                ],
+                "completed": 0,
+                "question": {
+                    "question": "How likely are you to recommend application? ",
+                    "questionType": "Single"
+                },
+                "started": 0,
+                "surveyId": null
+            }
+        ],
+        "status": 0,
+        "surveyId": "1234",
+        "surveyURL": null,
+        "title": "Test Survey1"
+    }
+]
+
+POST : get_response_counts
+Details : Returns how many respondents have started and/or completed the survey 
+Endpoint : http://localhost:8080/api/getResponseCounts
+Sample Response
+[{"question":null,"answers":null,"started":4,"completed":4,"surveyId":"1231"},
+{"question":null,"answers":null,"started":2,"completed":0,"surveyId":"1230"}]
+
+
+Other APIS:
+/api/editsurvey
+/api/savesurvey
+/api/deletesurvey
+
+
+Other test cases and Limitations:
+1. Surveys with a limit on responses 
+2. Text responses greater than some characters
+3. Limit on Max number of respondents per call 
+4. Surveys with over limited survey pages will not be returned
+5. Surveys with over limited questions will not be returned
+6. Maximum number of recipients supported 
