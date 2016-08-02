@@ -39,11 +39,13 @@ public class UserControllerTests {
 
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
-
+		//{"uid":1234,"userType":"admin","userName":"Priya"}
 		this.mockMvc.perform(get("/api/get_user"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.name").value("testUser"));
+				.andExpect(jsonPath("$.uid").value(1234))
+				.andExpect(jsonPath("$.userType").value("admin"))
+				.andExpect(jsonPath("$.userName").value("Priya"));
 	}
 
 	@Test
@@ -52,7 +54,9 @@ public class UserControllerTests {
 		this.mockMvc.perform(get("/api/get_user").param("name", "Priya"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.name").value("Priya"));
+				.andExpect(jsonPath("$.uid").value(1234))
+				.andExpect(jsonPath("$.userType").value("admin"))
+				.andExpect(jsonPath("$.userName").value("Priya"));
 	}
 
 }
